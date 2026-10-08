@@ -1,5 +1,5 @@
 import React from 'react';
-import Allproducts from './Allproducts';
+
 
 
 const Bazar6product = async () => {
@@ -9,8 +9,6 @@ const Bazar6product = async () => {
     const increese = data.filter((item) => item.change.dir === 'up').sort((a, b) => b.change.pct - a.change.pct).slice(0, 6)
 
     const decreese = data.filter((item) => item.change.dir === 'down').sort((a, b) => a.change.pct - b.change.pct).slice(0, 6)
-
-
 
     return (
         <div className='container mx-auto '>
@@ -39,7 +37,7 @@ const Bazar6product = async () => {
                                     </div>
 
                                 </div>
-                                <span className={`${item.change.dir === 'up' ? 'text-red-600 rounded-full bg-[#F1F6F2] px-3 py-1 text-xs font-medium' : 'text-green-600 rounded-full bg-[#F1F6F2] px-3 py-1 text-xs font-medium'} `}>
+                                <span className={`${item.change.dir === 'up' ? 'text-red-600   rounded-full bg-[#F1F6F2] px-3 py-1 text-xs font-medium' : 'text-green-600 rounded-full bg-[#F1F6F2] px-3 py-1 text-xs font-medium'} `}>
                                     {item.change.dir === 'up' ? '▲' : '▼'}
                                     {Math.abs(item.change.pct)}%
                                 </span>
@@ -105,7 +103,7 @@ const Bazar6product = async () => {
                 </div>
 
             </div>
-            <Allproducts />
+
         </div>
     );
 };

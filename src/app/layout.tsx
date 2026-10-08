@@ -24,12 +24,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-theme='light'
       className={`${notoserifbangli.className}  h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#F3F8F4]">
+      <body suppressHydrationWarning className="min-h-full flex flex-col bg-[#F3F8F4]">
         <Navber />
         <Navlinks />
         <Marquee />
 
-        <main className="max-w-7xl mx-auto px-4">
+        <main className="container mx-auto flex-1">
           {children}
         </main>
         <Footer />

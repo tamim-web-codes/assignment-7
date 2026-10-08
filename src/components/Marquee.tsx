@@ -37,7 +37,7 @@ const Marquee = async () => {
                     </MarqueeText>
                 </div>
             </div>
-            <Benner />
+
         </>
 
 
