@@ -4,6 +4,7 @@ import "./globals.css";
 import Navber from "@/components/Navber";
 import Marquee from "@/components/Marquee";
 import Navlinks from "@/components/Navlinks";
+import Footer from "@/components/Footer";
 
 const notoserifbangli = Noto_Serif_Bengali({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="max-w-7xl mx-auto px-4">
           {children}
         </main>
+        <Footer />
       </body>
     </html >
   );
