@@ -1,0 +1,68 @@
+import React from 'react';
+
+
+const Bazar6product = async () => {
+    const res = await fetch('https://api.abcz.workers.dev/api/bazardor/products', { cache: 'force-cache' })
+    const data = await res.json()
+
+    const increese = data.filter((item) => item.change.dir === 'up').slice(0, 6)
+
+    const decreese = data.filter((item) => item.change.dir === 'down')
+
+
+
+    return (
+        <div className='container mx-auto '>
+
+            <div>
+                <h1 className="mb-4 text-xl font-bold text-gray-800"><span className="text-red-500">▲</span> আজ দাম বেড়েছে</h1>
+
+                <div className='grid grid-cols-3 gap-4'>
+
+                    {increese.map((item) =>
+                        <div className='rounded-2xl border border-gray-200 bg-white p-4 ' key={item.id}>
+                            <div className="flex items-center justify-between gap-3">
+
+                                <div className="flex items-center gap-3">
+
+                                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#F1F6F2] text-2xl">
+                                        {item.categoryIcon}
+                                    </div>
+                                    <div>
+                                        <h1 className="font-bold text-gray-800">
+                                            {item.nameBn}
+                                        </h1>
+                                        <p className="text-xs text-gray-600">
+                                            প্রতি {item.unit}
+                                        </p>
+                                    </div>
+
+                                </div>
+                                <span className="rounded-full bg-[#F1F6F2] px-3 py-1 text-xs font-medium text-green-600">
+                                    {item.change.dir === 'up' ? '▲' : '▼'}
+                                    {Math.abs(item.change.pct)}%
+                                </span>
+
+                            </div>
+
+
+                            {/* Price */}
+                            <div className="mt-4">
+                                <p className="text-xs text-gray-600">
+                                    আজকের দাম
+                                </p>
+
+                                <p className="text-xl font-bold text-gray-800">
+                                    {item.today} টাকা
+                                </p>
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+            </div>
+        </div>
+    );
+};
+
+export default Bazar6product;
