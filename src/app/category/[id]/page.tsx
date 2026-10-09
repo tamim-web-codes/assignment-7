@@ -86,7 +86,7 @@ const Navcatehory = async ({ params, searchParams }: IParams) => {
                         const isUp = single.change.dir === "up";
                         return (
                             <Link
-                                href=''
+                                href={`/cardcategory/${single.id}`}
                                 key={single.id}
                                 className="group"
                             >
