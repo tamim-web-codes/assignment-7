@@ -1,7 +1,7 @@
 
 import React from 'react';
 import MarqueeText from "react-fast-marquee"
-import Benner from './Benner';
+
 
 
 
@@ -25,7 +25,7 @@ const Marquee = async () => {
                             <h1 className='font-bold'>{item.nameBn}</h1>
                             <h1>{item.today} টাকা / {item.unit}</h1>
                             <span className={`${item.change.dir === 'up' ? 'text-[#05893E] items-center' : 'text-red-600 items-center'}`}>
-                                {item.change.dir === 'up' ? "▲" : "▼"}
+                                {item.change.dir === 'up' ? "▼" : "▲"}
                                 <span className='font-bold'>
                                     {Math.abs(item.change.pct)}%
                                 </span>

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 
@@ -19,13 +20,13 @@ const Bazar6product = async () => {
                 <div className='grid grid-cols-3 gap-4'>
 
                     {increese.map((item) =>
-                        <div className='rounded-2xl border border-gray-200 bg-white p-4 ' key={item.id}>
+                        <Link href={`/cardcategory/${item.id}`} className='rounded-2xl border border-gray-200 bg-white p-4 transition-all duration-200 hover:-translate-y-1 hover:border-gray-300 hover:shadow-md cursor-pointer' key={item.id}>
                             <div className="flex items-center justify-between gap-3">
 
                                 <div className="flex items-center gap-3">
 
                                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#F1F6F2] text-2xl">
-                                        {item.categoryIcon}
+                                        {item.image}
                                     </div>
                                     <div>
                                         <h1 className="font-bold text-gray-800">
@@ -53,7 +54,7 @@ const Bazar6product = async () => {
                                     {item.today} টাকা
                                 </p>
                             </div>
-                        </div>
+                        </Link>
                     )}
                 </div>
 
@@ -64,13 +65,13 @@ const Bazar6product = async () => {
                 <div className='grid grid-cols-3 gap-4'>
 
                     {decreese.map((item) =>
-                        <div className='rounded-2xl border border-gray-200 bg-white p-4 ' key={item.id}>
+                        <Link href={`/cardcategory/${item.id}`} className='rounded-2xl border border-gray-200 bg-white p-4 transition-all duration-200 hover:-translate-y-1 hover:border-gray-300 hover:shadow-md cursor-pointer' key={item.id}>
                             <div className="flex items-center justify-between gap-3">
 
                                 <div className="flex items-center gap-3">
 
                                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#F1F6F2] text-2xl">
-                                        {item.categoryIcon}
+                                        {item.image}
                                     </div>
                                     <div>
                                         <h1 className="font-bold text-gray-800">
@@ -98,7 +99,7 @@ const Bazar6product = async () => {
                                     {item.today} টাকা
                                 </p>
                             </div>
-                        </div>
+                        </Link>
                     )}
                 </div>
 
