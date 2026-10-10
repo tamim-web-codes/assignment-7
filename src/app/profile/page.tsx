@@ -2,7 +2,9 @@
 'use client'
 
 import { authClient } from "@/lib/auth-client";
+import Image from "next/image";
 import React from "react";
+import { toast } from "react-toastify";
 
 const Profile = () => {
     const { data: session } = authClient.useSession()
@@ -10,6 +12,23 @@ const Profile = () => {
 
     const handlesignout = async () => {
         const { data, error } = await authClient.signOut()
+        if (data) {
+            toast.success('সফলভাবে সাইন আউট হয়েছে')
+        }
+    }
+
+    const onSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
+        e.preventDefault()
+        const formData = new FormData(e.target)
+        const user = Object.fromEntries(formData.entries())
+        const { data } = await authClient.updateUser({
+            name: user.name as string
+        })
+        if (data) {
+            toast.success('নাম সফলভাবে আপডেট হয়েছে।')
+        }
+       
+
     }
 
     return (
@@ -26,12 +45,21 @@ const Profile = () => {
                 </div>
                 <div className="mb-5 flex flex-col items-center justify-between gap-4 rounded-xl border border-[#DFE8DF] bg-[#FAFCFA] p-5 sm:flex-row">
                     <div className="flex w-full items-center gap-3">
-                        <div className="h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-gray-200">
-                            <img
-                                src={user?.image}
-                                alt="Profile"
-                                className="h-full w-full object-cover"
-                            />
+                        <div className="avatar avatar-online">
+                            <div className="avatar avatar-online">
+                                <div className="w-24 rounded-full">
+                                    <Image
+                                        src={user?.image || "/profile.png"}
+                                        alt={user?.name || "Profile"}
+                                        width={96}
+                                        height={96}
+                                        className="rounded-full object-cover"
+                                    />
+
+
+
+                                </div>
+                            </div>
                         </div>
 
                         <div className="min-w-0">
@@ -40,6 +68,7 @@ const Profile = () => {
                             </h2>
                             <p className="truncate text-sm text-gray-500">
                                 {user?.email}
+
                             </p>
                         </div>
                     </div>
@@ -55,20 +84,23 @@ const Profile = () => {
                     </h2>
 
                     <div className="px-0 sm:px-3">
-                        <label className="mb-2 block text-xs font-medium text-[#263229]">
-                            নাম
-                        </label>
+                        <form onSubmit={onSubmit}>
 
-                        <input
-                            type="text"
-                            name="name"
-                            placeholder="নাম পরিবর্তন করুন"
-                            className="input h-9 w-full rounded-lg border border-[#DFE8DF] bg-transparent outline-none focus:border-green-600"
-                        />
+                            <label className="mb-2 block text-xs font-medium text-[#263229]">
+                                নাম
+                            </label>
 
-                        <button className="btn mt-3 h-9 min-h-9 w-full rounded-lg border-none bg-[#078A43] text-sm font-semibold text-white shadow-md hover:bg-[#067639]">
-                            আপডেট
-                        </button>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="নাম পরিবর্তন করুন"
+                                className="input h-9 w-full rounded-lg border border-[#DFE8DF] bg-transparent outline-none focus:border-green-600"
+                            />
+
+                            <button type="submit" className="btn mt-3 h-9 min-h-9 w-full rounded-lg border-none bg-[#078A43] text-sm font-semibold text-white shadow-md hover:bg-[#067639]">
+                                আপডেট
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
