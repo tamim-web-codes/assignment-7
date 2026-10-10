@@ -1,10 +1,19 @@
 
+'use client'
+
+import { authClient } from "@/lib/auth-client";
 import React from "react";
 
 const Profile = () => {
- const 
+    const { data: session } = authClient.useSession()
+    const user = session?.user
+
+    const handlesignout = async () => {
+        const { data, error } = await authClient.signOut()
+    }
 
     return (
+
         <div className="min-h-screen bg-[#F0F5F0] px-4 py-6">
             <div className="mx-auto max-w-3xl">
                 <div className="mb-5">
@@ -19,7 +28,7 @@ const Profile = () => {
                     <div className="flex w-full items-center gap-3">
                         <div className="h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-gray-200">
                             <img
-                                src="/profile.png"
+                                src={user?.image}
                                 alt="Profile"
                                 className="h-full w-full object-cover"
                             />
@@ -27,15 +36,15 @@ const Profile = () => {
 
                         <div className="min-w-0">
                             <h2 className="font-semibold text-[#263229]">
-                                Rezwan Ahmed
+                                {user?.name}
                             </h2>
                             <p className="truncate text-sm text-gray-500">
-                                rezwanahmed@gmail.com
+                                {user?.email}
                             </p>
                         </div>
                     </div>
 
-                    <button className="btn btn-outline h-9 min-h-9 w-full rounded-lg border-red-400 bg-transparent px-4 text-xs font-medium text-red-500 hover:bg-red-50 sm:w-auto">
+                    <button onClick={handlesignout} className="btn btn-outline h-9 min-h-9 w-full rounded-lg border-red-400 bg-transparent px-4 text-xs font-medium text-red-500 hover:bg-red-50 sm:w-auto">
                         ↩ সাইন আউট
                     </button>
                 </div>
@@ -53,6 +62,7 @@ const Profile = () => {
                         <input
                             type="text"
                             name="name"
+                            placeholder="নাম পরিবর্তন করুন"
                             className="input h-9 w-full rounded-lg border border-[#DFE8DF] bg-transparent outline-none focus:border-green-600"
                         />
 
