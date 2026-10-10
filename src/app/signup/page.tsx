@@ -11,7 +11,7 @@ const SignUp = () => {
         e.preventDefault()
 
         const formData = new FormData(e.target)
-        const user = Object.fromEntries(formData.entries())
+        const user = Object.fromEntries(formData.entries()) as { name: string, email: string, password: string }
         const { data, error } = await authClient.signUp.email({
             ...user,
             callbackURL: '/'

@@ -1,15 +1,26 @@
 import Link from 'next/link';
 import React from 'react';
+interface IChange {
+    dir: 'up' | 'down';
+    pct: number;
+}
 
-
+interface IProduct {
+    id: number;
+    nameBn: string;
+    image: string;
+    unit: string;
+    today: number;
+    change: IChange;
+}
 
 const Bazar6product = async () => {
     const res = await fetch('https://api.abcz.workers.dev/api/bazardor/products', { cache: 'force-cache' })
     const data = await res.json()
 
-    const increese = data.filter((item) => item.change.dir === 'up').sort((a, b) => b.change.pct - a.change.pct).slice(0, 6)
+    const increese = data.filter((item: IProduct) => item.change.dir === 'up').sort((a: IProduct, b: IProduct) => b.change.pct - a.change.pct).slice(0, 6)
 
-    const decreese = data.filter((item) => item.change.dir === 'down').sort((a, b) => a.change.pct - b.change.pct).slice(0, 6)
+    const decreese = data.filter((item: IProduct) => item.change.dir === 'down').sort((a: IProduct, b: IProduct) => a.change.pct - b.change.pct).slice(0, 6)
 
     return (
         <div className='container mx-auto '>
@@ -19,7 +30,7 @@ const Bazar6product = async () => {
 
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
 
-                    {increese.map((item) =>
+                    {increese.map((item: IProduct) =>
                         <Link href={`/cardcategory/${item.id}`} className='rounded-2xl border border-gray-200 bg-white p-4 transition-all duration-200 hover:-translate-y-1 hover:border-gray-300 hover:shadow-md cursor-pointer' key={item.id}>
                             <div className="flex items-center justify-between gap-3">
 
@@ -64,7 +75,7 @@ const Bazar6product = async () => {
 
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
 
-                    {decreese.map((item) =>
+                    {decreese.map((item: IProduct) =>
                         <Link href={`/cardcategory/${item.id}`} className='rounded-2xl border border-gray-200 bg-white p-4 transition-all duration-200 hover:-translate-y-1 hover:border-gray-300 hover:shadow-md cursor-pointer' key={item.id}>
                             <div className="flex items-center justify-between gap-3">
 

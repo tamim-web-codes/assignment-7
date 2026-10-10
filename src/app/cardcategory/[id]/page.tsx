@@ -39,10 +39,9 @@ const Page = async ({ params }: IParams) => {
     if (!res.ok) {
         throw new Error("পণ্যের তথ্য লোড করা যায়নি");
     }
-
     const data: IProduct = await res.json();
 
-    const formatPrice = (price: number) =>
+    const formatPrice = (price: number): string =>
         new Intl.NumberFormat("bn-BD").format(price);
 
     const unitBn =

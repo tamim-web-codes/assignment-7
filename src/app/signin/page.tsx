@@ -9,7 +9,7 @@ const signIn = () => {
     const onSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
         e.preventDefault()
         const formData = new FormData(e.target)
-        const user = Object.fromEntries(formData.entries())
+        const user = Object.fromEntries(formData.entries()) as { name: string, email: string, password: string }
         const { data, error } = await authClient.signIn.email({
             ...user,
             callbackURL: '/'

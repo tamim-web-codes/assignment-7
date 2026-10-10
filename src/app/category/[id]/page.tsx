@@ -131,15 +131,11 @@ const Navcatehory = async ({ params, searchParams }: IParams) => {
                                         </span>
                                     </div>
                                 </div>
-
                             </Link>
-
                         );
-
                     })}
                 </div>
             </div>
-
         </main>
     );
 };

@@ -11,7 +11,7 @@ const Profile = () => {
     const user = session?.user
 
     const handlesignout = async () => {
-        const { data, error } = await authClient.signOut()
+        const { data } = await authClient.signOut()
         if (data) {
             toast.success('সফলভাবে সাইন আউট হয়েছে')
         }
@@ -27,7 +27,7 @@ const Profile = () => {
         if (data) {
             toast.success('নাম সফলভাবে আপডেট হয়েছে।')
         }
-       
+
 
     }
 
