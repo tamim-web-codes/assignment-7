@@ -8,7 +8,7 @@ const Allproducts = async () => {
         <div className='mt-10 mb-4 space-y-2'>
             <h1 className='text-xl font-bold'>সব পণ্য</h1>
             <p className='text-gray-500'>মোট {data.length} টি পণ্য দেখানো হচ্ছে</p>
-            <div className='grid grid-cols-3 gap-4'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
 
                 {data.map((item) =>
                     <Link href={`/cardcategory/${item.id}`} className='relative rounded-2xl border border-gray-200 bg-white p-4 transition-all duration-200 hover:-translate-y-1 hover:border-gray-300 hover:shadow-md cursor-pointer' key={item.id}>

@@ -17,7 +17,7 @@ const Bazar6product = async () => {
             <div className='mt-5'>
                 <h1 className="mb-4 text-xl font-bold text-gray-800"><span className="text-red-500 text-xl ">▲</span> আজ দাম বেড়েছে</h1>
 
-                <div className='grid grid-cols-3 gap-4'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
 
                     {increese.map((item) =>
                         <Link href={`/cardcategory/${item.id}`} className='rounded-2xl border border-gray-200 bg-white p-4 transition-all duration-200 hover:-translate-y-1 hover:border-gray-300 hover:shadow-md cursor-pointer' key={item.id}>
@@ -62,7 +62,7 @@ const Bazar6product = async () => {
             <div className='mt-5'>
                 <h1 className="mb-4 text-xl font-bold text-gray-800"><span className="text-green-600 text-xl ">▼</span> আজ দাম কমেছে</h1>
 
-                <div className='grid grid-cols-3 gap-4'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
 
                     {decreese.map((item) =>
                         <Link href={`/cardcategory/${item.id}`} className='rounded-2xl border border-gray-200 bg-white p-4 transition-all duration-200 hover:-translate-y-1 hover:border-gray-300 hover:shadow-md cursor-pointer' key={item.id}>
