@@ -3,11 +3,7 @@ import React, { Suspense } from 'react';
 import logo from '../../public/logo-icon.png'
 import { connection } from 'next/server';
 import Link from 'next/link';
-
-
-// const date = new Date().toLocaleDateString('bn-BD', {
-//     dateStyle: 'full'
-// })
+import UseInfo from './UseInfo';
 
 
 const CurrentDate = async () => {
@@ -49,11 +45,8 @@ const Navber = () => {
 
                     </div>
                 </div>
+                <UseInfo />
 
-                <div className='flex gap-4'>
-                    <button className='btn border-none font-bold bg-white'>সাইন ইন</button>
-                    <button className='btn bg-[#05893E] font-bold text-white'>সাইন আপ</button>
-                </div>
             </div>
 
 

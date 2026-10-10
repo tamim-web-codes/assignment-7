@@ -5,6 +5,7 @@ import Navber from "@/components/Navber";
 import Marquee from "@/components/Marquee";
 import Navlinks from "@/components/Navlinks";
 import Footer from "@/components/Footer";
+import { ToastContainer } from "react-toastify";
 
 const notoserifbangli = Noto_Serif_Bengali({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <Footer />
+        <ToastContainer />
       </body>
     </html >
   );
