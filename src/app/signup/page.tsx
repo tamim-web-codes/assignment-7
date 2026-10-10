@@ -62,6 +62,9 @@ const SignUp = () => {
                         <label className="label">নাম</label>
                         <input type="text" name="name" className="input" placeholder="নাম" />
 
+                        <label className="label">ছবির URL</label>
+                        <input type="text" name="image" className="input" placeholder="ছবির URL" />
+
                         <label className="label">ইমেইল</label>
                         <input type="email" name="email" className="input" placeholder="ইমেইল" />
 

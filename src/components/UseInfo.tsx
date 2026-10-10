@@ -15,6 +15,7 @@ const UseInfo = () => {
             toast.success('সফলভাবে সাইন আউট হয়েছে')
         }
     }
+    console.log(user?.image);
     return (
         <>
             {user ? (
@@ -24,7 +25,7 @@ const UseInfo = () => {
                         className="flex items-center gap-2 rounded-lg p-2 hover:bg-gray-100"
                     >
                         <img
-                            src={user?.image}
+                            src={user?.image || '/default-avatar.png'}
                             alt="Profile"
                             className="h-7 w-7 rounded-full object-cover"
                         />
