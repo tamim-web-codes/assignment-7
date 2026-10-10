@@ -1,4 +1,5 @@
 
+import { notFound } from "next/navigation";
 import React from "react";
 export const instant = false;
 interface IMarket {
@@ -37,7 +38,7 @@ const Page = async ({ params }: IParams) => {
     );
 
     if (!res.ok) {
-        throw new Error("পণ্যের তথ্য লোড করা যায়নি");
+        notFound()
     }
     const data: IProduct = await res.json();
 

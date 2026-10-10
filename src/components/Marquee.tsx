@@ -2,7 +2,19 @@
 import React from 'react';
 import MarqueeText from "react-fast-marquee"
 
+interface IChange {
+    dir: 'up' | 'down';
+    pct: number;
+}
 
+interface IProduct {
+    id: number;
+    categoryIcon: string;
+    nameBn: string;
+    today: number;
+    unit: string;
+    change: IChange;
+}
 
 
 const Marquee = async () => {
@@ -19,7 +31,7 @@ const Marquee = async () => {
                 <div className='flex flex-row flex-nowrap whitespace-nowrap overflow-x-auto '>
                     <MarqueeText speed={150} direction='left'
                         className="">
-                        {data.map(item => <div className='flex items-center gap-2 h-10 shrink-0 border-l border-gray-300 px-6' key={item.id}>
+                        {data.map((item: IProduct) => <div className='flex items-center gap-2 h-10 shrink-0 border-l border-gray-300 px-6' key={item.id}>
 
                             <h1>{item.categoryIcon}</h1>
                             <h1 className='font-bold'>{item.nameBn}</h1>

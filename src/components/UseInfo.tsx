@@ -15,7 +15,6 @@ const UseInfo = () => {
             toast.success('সফলভাবে সাইন আউট হয়েছে')
         }
     }
-
     return (
         <>
             {user ? (

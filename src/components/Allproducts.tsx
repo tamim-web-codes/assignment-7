@@ -1,5 +1,18 @@
 import Link from 'next/link';
 
+interface IChange {
+    dir: 'up' | 'down';
+    pct: number;
+}
+
+interface IProduct {
+    id: number;
+    nameBn: string;
+    image: string;
+    unit: string;
+    today: number;
+    change: IChange;
+}
 
 const Allproducts = async () => {
     const res = await fetch('https://api.abcz.workers.dev/api/bazardor/products', { cache: 'force-cache' })
@@ -10,7 +23,7 @@ const Allproducts = async () => {
             <p className='text-gray-500'>মোট {data.length} টি পণ্য দেখানো হচ্ছে</p>
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
 
-                {data.map((item) =>
+                {data.map((item: IProduct) =>
                     <Link href={`/cardcategory/${item.id}`} className='relative rounded-2xl border border-gray-200 bg-white p-4 transition-all duration-200 hover:-translate-y-1 hover:border-gray-300 hover:shadow-md cursor-pointer' key={item.id}>
                         <div className="flex items-center justify-between gap-3">
 

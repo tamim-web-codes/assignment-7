@@ -23,18 +23,11 @@ const Navber = () => {
             <div className='flex justify-between container mx-auto mt-5'>
 
                 <div className="flex items-center gap-3">
-
-                    <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl bg-[#05893E]">
-                        <Link href='/'>
-                            <Image
-                                src={logo}
-                                alt="বাজার দর"
-                                width={34}
-                                height={34}
-                                className="object-contain"
-                            />
-                        </Link>
-                    </div>
+                    <Link href='/'>
+                        <div className="flex h-15 w-15 items-center justify-center rounded-xl bg-[#05893E] shadow-lg shadow-green-200 ">
+                            <span className="text-4xl">🛒</span>
+                        </div>
+                    </Link>
                     <div className="flex flex-col leading-none">
                         <h1 className="text-[20px] font-bold tracking-tight text-[#1F2937]">   বাজার দর
                         </h1>

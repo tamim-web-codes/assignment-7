@@ -1,6 +1,7 @@
 
 import SortSelect from "@/components/SortSelect";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 export const instant = false;
 
 interface IParams {
@@ -42,7 +43,7 @@ const Navcatehory = async ({ params, searchParams }: IParams) => {
         }
     );
     if (!res.ok) {
-        throw new Error("Failed to fetch products");
+        notFound()
     }
     const data: IProduct[] = await res.json();
     const sortedData = [...data].sort((a, b) => {
